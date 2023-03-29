@@ -6,17 +6,20 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**Classe de entidade Episodio.*/
 @Entity
 public class Episodio {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private Integer id;
   
   private Integer numero;
   private Integer duracaoEmMinutos;
   
+  @JsonIgnore
   @ManyToOne
   private Serie serie;
   
@@ -29,13 +32,13 @@ public class Episodio {
   }
   
   /**Método principal com todos os parâmetros.*/
-  public Episodio(Long id, Integer numero, Integer duracaoEmMinutos, Serie serie) {
+  public Episodio(Integer id, Integer numero, Integer duracaoEmMinutos, Serie serie) {
     this.numero = numero;
     this.duracaoEmMinutos = duracaoEmMinutos;
     this.serie = serie;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
   
