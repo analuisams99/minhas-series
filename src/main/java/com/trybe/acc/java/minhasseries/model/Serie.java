@@ -15,14 +15,14 @@ import javax.persistence.OneToMany;
 public class Serie {
 
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
-  private Long id;
+  @GeneratedValue(strategy = GenerationType.SEQUENCE)
+  private Integer id;
 
   private String nome;
   
   @Column
   @OneToMany(mappedBy = "serie", cascade = CascadeType.ALL)
-  private List<Episodio> episodios = new ArrayList<>();
+  private List<Episodio> episodios = new ArrayList<Episodio>();
   
   public Serie() {}
 
@@ -30,7 +30,7 @@ public class Serie {
     this.nome = nome;
   }
 
-  public Long getId() {
+  public Integer getId() {
     return id;
   }
   
