@@ -21,8 +21,8 @@ public class GerenciadorExceptionController {
   }
 
   @ExceptionHandler({
-    SerieExistenteException.class,
-    EpisodioExistenteException.class
+      SerieExistenteException.class,
+      EpisodioExistenteException.class
   })
   public ResponseEntity<DataError> conflict(RuntimeException exception) {
     return ResponseEntity.status(HttpStatus.CONFLICT).body(new DataError(exception.getMessage()));
